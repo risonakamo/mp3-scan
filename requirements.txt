@@ -1,0 +1,4 @@
+devtools
+pydantic
+loguru
+rich
