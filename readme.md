@@ -2,7 +2,7 @@ mp3 dir scan program for helping with reviewing mp3s in a dir
 
 # setup
 1. activate env with python 3.10+
-2. `pip install -r requirements.txt`
+2. `poetry install`
 
 # usage
 1. edit `mp3_scan.py`
