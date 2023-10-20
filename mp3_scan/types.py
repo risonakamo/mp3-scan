@@ -14,3 +14,9 @@ class DecisionItem(BaseModel):
     decision:str
     folder:str
     filename:str
+
+class DecisionItemPair(BaseModel):
+    """pair between decision and mp3 item"""
+
+    decision:DecisionItem
+    mp3item:Mp3Item
