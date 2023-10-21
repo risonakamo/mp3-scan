@@ -2,6 +2,7 @@
 
 from csv import DictReader
 from devtools import debug as debugr
+from rich import print as printr
 
 from loguru import logger
 from mp3_scan.types import DecisionItem, DecisionItemPair, Mp3Item
@@ -18,8 +19,15 @@ def readDecisionTsv(filepath:str)->list[DecisionItem]:
 
     return items
 
-def pairDecisionItems(decisions:list[DecisionItem],mp3items:list[Mp3Item])->list[DecisionItemPair]:
+def pairDecisionItems(
+    decisions:list[DecisionItem],
+    mp3items:list[Mp3Item],
+    logErrors:bool=False
+)->list[DecisionItemPair]:
     """pair decision items with mp3 items"""
+
+    printr(f"{len(decisions)} decisions")
+    printr(f"{len(mp3items)} found mp3 items")
 
     pairs:list[DecisionItemPair]=[]
 
@@ -42,8 +50,10 @@ def pairDecisionItems(decisions:list[DecisionItem],mp3items:list[Mp3Item])->list
                 foundPair=True
                 continue
 
-        if not foundPair:
+        if not foundPair and logErrors:
             logger.error("failed to find pair for:")
             debugr(decision)
+
+    printr(f"constructed {len(pairs)}/{len(decisions)} pairs from decisions")
 
     return pairs

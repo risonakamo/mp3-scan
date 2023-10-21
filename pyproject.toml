@@ -2,7 +2,7 @@
 name = "mp3-scan"
 version = "1.0.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["risonakamo"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
